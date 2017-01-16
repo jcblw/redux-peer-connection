@@ -1,7 +1,7 @@
 
 import { combineReducers } from 'redux'
-import webrtcConstants from '../constants'
-import local from './local'
+import webrtcConstants from './constants'
+import local from './local-store'
 
 export function isInitialized (state = false, action) {
   if (action.type === webrtcConstants.INIT_WEBRTC) {

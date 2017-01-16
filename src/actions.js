@@ -1,5 +1,5 @@
 
-import webrtcConstants from '../constants'
+import webrtcConstants from './constants'
 
 export const createPeer = webRTCOptions => ({
   type: webrtcConstants.INIT_WEBRTC,

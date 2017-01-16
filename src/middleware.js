@@ -9,7 +9,7 @@ import {
   peerData,
   isAcceptingSignal,
   isSendingData
-} from '../actions'
+} from './actions'
 import local from './local-store'
 
 const noPeerError = (method) =>
@@ -35,7 +35,7 @@ export function acceptOffer (offer, peer) {
 
 export function sendData (data, peer) {
   if (!peer) throw noPeerError('sendData')
-  peer.sendData(data)
+  peer.send(data)
 }
 
 export const middleware = store => next => action => {
