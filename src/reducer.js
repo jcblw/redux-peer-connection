@@ -46,6 +46,11 @@ export function data (state = [], action) {
   return [...state, action.data.toString()]
 }
 
+export function stream (state = null, action) {
+  if (action.type !== webrtcConstants.PEER_STREAM) return state
+  return action.stream
+}
+
 export const createReducer = (keyName) => {
   if (keyName !== undefined) {
     local.keyName = keyName
@@ -57,6 +62,7 @@ export const createReducer = (keyName) => {
     isInitialized,
     offer,
     answer,
-    data
+    data,
+    stream
   })
 }

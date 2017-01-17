@@ -7,6 +7,7 @@ import {
   peerSignal,
   peerConnected,
   peerData,
+  peerStream,
   isAcceptingSignal,
   isSendingData
 } from './actions'
@@ -26,6 +27,7 @@ export function createPeer (dispatch, webRTCOptions) {
   peer.on('signal', signal => dispatch(peerSignal(signal)))
   peer.on('connect', () => dispatch(peerConnected(true)))
   peer.on('data', data => dispatch(peerData(data)))
+  peer.on('stream', stream => dispatch(peerStream(stream)))
   dispatch(createWebRTC(peer))
 }
 

@@ -31,6 +31,11 @@ export const peerData = data => ({
   data
 })
 
+export const peerStream = stream => ({
+  type: webrtcConstants.PEER_STREAM,
+  stream
+})
+
 export const acceptSignal = signal => {
   if (typeof signal === 'string') signal = JSON.parse(signal)
   return {

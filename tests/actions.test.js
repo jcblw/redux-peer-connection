@@ -12,6 +12,7 @@ createTest('peerError', actions, 'PEER_ERROR', 'error')
 createTest('peerSignal', actions, 'PEER_SIGNAL', 'signal')
 createTest('peerConnected', actions, 'PEER_CONNECTED', 'isConnected')
 createTest('peerData', actions, 'PEER_DATA', 'data')
+createTest('peerStream', actions, 'PEER_STREAM', 'stream')
 createTest('sendData', actions, 'PEER_SEND_DATA', 'data')
 createTest('acceptSignal', actions, 'ACCEPT_SIGNAL', 'signal')
 

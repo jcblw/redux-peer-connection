@@ -8,6 +8,7 @@ export default keymirror({
   PEER_SIGNAL: null,
   PEER_CONNECTED: null,
   PEER_DATA: null,
+  PEER_STREAM: null,
   PEER_SEND_DATA: null,
   ACCEPT_SIGNAL: null
 })
