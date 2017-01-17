@@ -1,6 +1,6 @@
 {
   "name": "redux-peer-connection",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Some redux tooling around create peer to peer connections",
   "main": "lib/index.js",
   "repository": {
