@@ -1,9 +1,11 @@
 import test from 'ava'
-import * as actions from '../lib/actions'
+import {actions} from '../lib'
 import {basicActionCreatorTest} from './utils'
 
 const createTest = basicActionCreatorTest(test)
 
+// these are some simple test, that apply to alot of the functionality
+// these actions do checkout "./utils.js" for more depth
 createTest('createPeer', actions, 'INIT_WEBRTC', 'webRTCOptions')
 createTest('createWebRTC', actions, 'WEBRTC_CREATED', 'webrtc')
 createTest('peerError', actions, 'PEER_ERROR', 'error')
