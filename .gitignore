@@ -1,4 +1,10 @@
+# node stuff
 node_modules
 *.log
 
+# build
 lib
+
+#artifacts
+.nyc_output
+coverage

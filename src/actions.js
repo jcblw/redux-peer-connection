@@ -11,15 +11,6 @@ export const createWebRTC = webrtc => ({
   webrtc
 })
 
-export const isCreatingPeer = ({ type }) =>
-  type === webrtcConstants.INIT_WEBRTC
-
-export const isAcceptingSignal = ({ type }) =>
-  type === webrtcConstants.ACCEPT_SIGNAL
-
-export const isSendingData = ({ type }) =>
-  type === webrtcConstants.PEER_SEND_DATA
-
 export const peerError = error => ({
   type: webrtcConstants.PEER_ERROR,
   error
@@ -52,3 +43,12 @@ export const sendData = data => ({
   type: webrtcConstants.PEER_SEND_DATA,
   data
 })
+
+export const isCreatingPeer = ({ type }) =>
+  type === webrtcConstants.INIT_WEBRTC
+
+export const isAcceptingSignal = ({ type }) =>
+  type === webrtcConstants.ACCEPT_SIGNAL
+
+export const isSendingData = ({ type }) =>
+  type === webrtcConstants.PEER_SEND_DATA

@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - '6'
 deploy:
-  provider: 'npm'
+  provider: npm
   api_key:
     secure: Jf3RxjbI4lL/xkz27X43ncXqoxa31kebs/pjC/JFvruVZO3u3kF023WojBXAk1lPRQhosIdyP1AIItEeE3/Mtw9HN3od8BuQ/DnG+h+N9fz21mgJH8Q2eTiAuNEu/Bmyfm1oGLLFP53EZH8arv3fGVXfaUNOORZX6xtejLPWlJDlXgyxaBj8gujBTjRvDitCHYm3x4LQGlaIHuhkebRJrchYDX+kkDWnBVdsoS0CCsj8mhQfWunxa/fke2IVKrlnntOYKqIiR07yAOj2QU/GYSso3/RzMS3+EE1gA8cQqYIYKdYVds8P/XfTq9jRwgiw/pbfWnL8sef8jkq/AK/8PngUGGsrLyE0nbtQJJlS7NfNL6L/vgaab6rgeOqCIrBkLI3+D1Crcs0dtWSzG3iP3+7bSwk9lOeCrVs2hocU0LGSTbtRwLQvpMoRaJbHEx7VJkO5xT6HNYfpXM6YYPXGCip6QHWrk+h3SwIsO7hcLSG8EUzDCxtl2pZVfiGAT+GYDtNvqAUIwTzEi8N/SR0WEv+W9CtCadCOiu+51OxhF1S4Y4HRPmpop0igM/eQajrApID+fxnQtqD2/g0rNAXQ1QSp2N4p/O7vLoLqBLl+nUSZ3B0OBBSsXdw3/GL3+ldvcDA4WYrr5fXpEqV06W6R+hkzJgIliGsKgF+QFzV1SFk=
   on:

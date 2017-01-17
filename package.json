@@ -10,7 +10,7 @@
   "scripts": {
     "prepublish": "npm run build",
     "build": "babel src --out-dir lib",
-    "test": "standard"
+    "test": "standard && nyc ava tests/*.test.js"
   },
   "author": "Jacob Lowe",
   "license": "MIT",
@@ -18,15 +18,17 @@
     "redux": "^3.6.0"
   },
   "dependencies": {
-    "key-mirror": "^1.0.1",
+    "keymirror": "^0.1.1",
     "simple-peer": "^6.1.3"
   },
   "devDependencies": {
+    "ava": "^0.17.0",
     "babel": "^6.5.2",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",
     "babel-preset-env": "^1.1.8",
+    "nyc": "^10.0.0",
     "standard": "^8.6.0"
   },
   "files": [

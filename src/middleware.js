@@ -12,8 +12,9 @@ import {
 } from './actions'
 import local from './local-store'
 
-const noPeerError = (method) =>
-  new Error(`Cannot call ${method} before a peer is created. See method action "createPeer"`)
+export function noPeerError (method) {
+  return new Error(`Cannot call ${method} before a peer is created. See method action "createPeer"`)
+}
 
 export function getPeer (store) {
   return store.getState()[local.keyName]._peer
