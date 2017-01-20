@@ -10,7 +10,7 @@
   "scripts": {
     "prepublish": "npm run build",
     "build": "babel src --out-dir lib",
-    "test": "standard && nyc ava tests/*.test.js"
+    "test": "standard && npm run build && nyc ava tests/*.test.js"
   },
   "author": "Jacob Lowe",
   "license": "MIT",
