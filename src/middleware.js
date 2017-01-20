@@ -21,8 +21,8 @@ export function getPeer (store) {
   return store.getState()[local.keyName]._peer
 }
 
-export function createPeer (dispatch, webRTCOptions) {
-  const peer = new SimplePeer(webRTCOptions)
+export function createPeer (dispatch, webRTCOptions, Peer) {
+  const peer = new Peer(webRTCOptions)
   peer.on('error', err => dispatch(peerError(err)))
   peer.on('signal', signal => dispatch(peerSignal(signal)))
   peer.on('connect', () => dispatch(peerConnected(true)))
@@ -45,7 +45,7 @@ export const middleware = store => next => action => {
   next(action)
   if (action.type === 'PEER_SIGNAL') console.log(JSON.stringify(action.signal))
   if (isCreatingPeer(action) && !getPeer(store)) {
-    return createPeer(store.dispatch, action.webRTCOptions)
+    return createPeer(store.dispatch, action.webRTCOptions, SimplePeer)
   }
   if (isAcceptingSignal(action)) {
     return acceptOffer(action.signal, getPeer(store))

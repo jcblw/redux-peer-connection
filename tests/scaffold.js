@@ -1,5 +1,9 @@
 module.exports.store = {
   getState () {
-    return {}
+    return {
+      peer: {
+        _peer: 'foo'
+      }
+    }
   }
 }
