@@ -1,3 +1,4 @@
+
 module.exports.store = {
   getState () {
     return {
@@ -7,3 +8,21 @@ module.exports.store = {
     }
   }
 }
+
+const peerOptions = { constuctorOptions: {}, listeners: {} }
+function createPeerConstruct (options = peerOptions) {
+  return class PeerMock {
+    constructor (opts) {
+      Object.assign(
+        options.constuctorOptions,
+        opts
+      )
+    }
+
+    on (key, callback) {
+      options.listeners[key] = callback
+    }
+  }
+}
+
+module.exports.createPeerConstruct = createPeerConstruct

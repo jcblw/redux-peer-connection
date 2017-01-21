@@ -34,3 +34,25 @@ test(
     t.is(getPeer(store), 'foo', 'The correct key is grabed from the store')
   }
 )
+
+test(
+  'the "createPeer" function',
+  t => {
+    const { createPeer } = middlewareFns
+    t.plan(8)
+    t.is(typeof createPeer, 'function', 'the "createPeer" export is a function')
+    const options = { foo: 'bar' }
+    const peerOptions = { constuctorOptions: {}, listeners: {} }
+    const Peer = scaffold.createPeerConstruct(peerOptions)
+    let _ret
+    const dispatch = x => { _ret = x }
+    createPeer(dispatch, options, Peer)
+    t.true(_ret.webrtc instanceof Peer, 'the return of the "createPeer" function is a instance of "Peer"')
+    t.is(_ret.type, 'WEBRTC_CREATED', 'the action created in the first dispactch is the "WEBRTC_CREATED" action')
+    t.truthy(peerOptions.listeners.error, 'there is a "error" handler attched to the peer')
+    t.truthy(peerOptions.listeners.signal, 'there is a "signal" handler attched to the peer')
+    t.truthy(peerOptions.listeners.data, 'there is a "data" handler attched to the peer')
+    t.truthy(peerOptions.listeners.stream, 'there is a "stream" handler attched to the peer')
+    t.truthy(peerOptions.listeners.connect, 'there is a "connect" handler attched to the peer')
+  }
+)
