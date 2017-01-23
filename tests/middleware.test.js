@@ -56,3 +56,24 @@ test(
     t.truthy(peerOptions.listeners.connect, 'there is a "connect" handler attched to the peer')
   }
 )
+
+test(
+  'the "acceptOffer" function',
+  t => {
+    const { acceptOffer } = middlewareFns
+    t.plan(3)
+    t.is(typeof acceptOffer, 'function', 'the "acceptOffer" export is a function')
+    t.throws(
+      () => acceptOffer(),
+      /Cannot call acceptOffer before a peer is created/,
+      'The correct error is thrown when no second param is passed'
+    )
+    const Peer = scaffold.createPeerConstruct({
+      constuctorOptions: {},
+      signal (msg) {
+        t.is(msg, 'foo', 'the correct message is sent to the peers send method')
+      }
+    })
+    acceptOffer('foo', new Peer({}))
+  }
+)

@@ -10,7 +10,7 @@ module.exports.store = {
 }
 
 const peerOptions = { constuctorOptions: {}, listeners: {} }
-function createPeerConstruct (options = peerOptions) {
+module.exports.createPeerConstruct = function createPeerConstruct (options = peerOptions) {
   return class PeerMock {
     constructor (opts) {
       Object.assign(
@@ -22,7 +22,13 @@ function createPeerConstruct (options = peerOptions) {
     on (key, callback) {
       options.listeners[key] = callback
     }
+
+    signal (...args) {
+      options.signal(...args)
+    }
+
+    send (...args) {
+      options.send(...args)
+    }
   }
 }
-
-module.exports.createPeerConstruct = createPeerConstruct
