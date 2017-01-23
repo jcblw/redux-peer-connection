@@ -77,3 +77,24 @@ test(
     acceptOffer('foo', new Peer({}))
   }
 )
+
+test(
+  'the "sendData" function',
+  t => {
+    const { sendData } = middlewareFns
+    t.plan(3)
+    t.is(typeof sendData, 'function', 'the "sendData" export is a function')
+    t.throws(
+      () => sendData(),
+      /Cannot call sendData before a peer is created/,
+      'The correct error is thrown when no second param is passed'
+    )
+    const Peer = scaffold.createPeerConstruct({
+      constuctorOptions: {},
+      send (msg) {
+        t.is(msg, 'foo', 'the correct message is sent to the peers send method')
+      }
+    })
+    sendData('foo', new Peer({}))
+  }
+)
