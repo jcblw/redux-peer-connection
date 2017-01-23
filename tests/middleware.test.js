@@ -1,8 +1,9 @@
 import test from 'ava'
 import * as middlewareFns from '../lib/middleware'
 import scaffold from './scaffold'
+import wrtc from 'wrtc'
 
-const { store } = scaffold
+const store = scaffold.createStore({ peer: 'foo' })
 
 test(
   'the "middleware" function',
@@ -96,5 +97,36 @@ test(
       }
     })
     sendData('foo', new Peer({}))
+  }
+)
+
+test(
+  'the "middleware" function',
+  t => {
+    const { middleware } = middlewareFns
+    t.plan(5)
+    t.is(typeof middleware, 'function', 'the "middleware" export is a function')
+    t.is(typeof middleware(), 'function', 'the initial return of the "middleware" function is a function')
+    t.is(typeof middleware()(), 'function', 'the initials return functions return is a function')
+
+    // createPeer action
+    const createPeerNext = action => t.is(action.type, 'INIT_WEBRTC', 'The next function is always called and receives the "INIT_WEBRTC" action')
+    const createPeerStore = scaffold.createStore({
+      dispatch (action) {
+        t.is(action.type, 'WEBRTC_CREATED', 'The action dispatched is "WEBRTC_CREATED"')
+      }
+    })
+    middleware(createPeerStore)(createPeerNext)({ type: 'INIT_WEBRTC', webRTCOptions: { wrtc } })
+
+    // acceptSignal action
+    // const acceptSignalNext = action => t.is(action.type, 'ACCEPT_SIGNAL', 'The next function is always called and receives the "ACCEPT_SIGNAL" action')
+    // const acceptSignalStore = scaffold.createStore({
+    //   peer: new (scaffold.createPeerConstruct({
+    //     signal (value) {
+    //       t.is(value, 'foo', 'the peer should get a signal of "foo"')
+    //     }
+    //   }))({})
+    // })
+    // middleware(acceptSignalStore)(acceptSignalNext)({ type: 'ACCEPT_SIGNAL', signal: 'foo' })
   }
 )

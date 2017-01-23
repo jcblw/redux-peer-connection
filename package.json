@@ -27,7 +27,8 @@
     "babel-loader": "^6.2.10",
     "babel-preset-env": "^1.1.8",
     "nyc": "^10.0.0",
-    "standard": "^8.6.0"
+    "standard": "^8.6.0",
+    "wrtc": "^0.0.61"
   },
   "files": [
     "lib"

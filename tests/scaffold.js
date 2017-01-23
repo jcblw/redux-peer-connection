@@ -1,10 +1,15 @@
 
-module.exports.store = {
-  getState () {
-    return {
-      peer: {
-        _peer: 'foo'
+module.exports.createStore = function createStore (options = {}) {
+  return {
+    getState () {
+      return {
+        peer: {
+          _peer: options.peer
+        }
       }
+    },
+    dispatch (...args) {
+      options.dispatch(...args)
     }
   }
 }

@@ -43,14 +43,12 @@ export function sendData (data, peer) {
 
 export const middleware = store => next => action => {
   next(action)
-  if (action.type === 'PEER_SIGNAL') console.log(JSON.stringify(action.signal))
   if (isCreatingPeer(action) && !getPeer(store)) {
     return createPeer(store.dispatch, action.webRTCOptions, SimplePeer)
   }
   if (isAcceptingSignal(action)) {
     return acceptOffer(action.signal, getPeer(store))
   }
-
   if (isSendingData(action)) {
     return sendData(action.data, getPeer(store))
   }
