@@ -1,5 +1,7 @@
 # Redux peer connection
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/jcblw/redux-peer-connection.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/jcblw/redux-peer-connection.svg?branch=master)](https://travis-ci.org/jcblw/redux-peer-connection)
 
 Redux peer connection is a set of redux tools that enable peer to peer connections between two browsers. It uses [`simple peer`](https://github.com/feross/simple-peer) under the hood.
